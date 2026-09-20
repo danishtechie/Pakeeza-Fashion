@@ -10,7 +10,7 @@ const csp = [
   // <script>/<style> tag instead.
   `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV !== "production" ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://images.unsplash.com",
+  "img-src 'self' data: https://images.unsplash.com https://res.cloudinary.com",
   "font-src 'self' data:",
   "connect-src 'self'",
   "frame-ancestors 'none'",
@@ -30,7 +30,10 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
+    ],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
