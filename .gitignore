@@ -8,4 +8,6 @@ node_modules
 !/public/uploads/.gitkeep
 /public/seed/*
 !/public/seed/.gitkeep
+# Seeded demo images are committed so the deployed catalog can display them.
+!/public/seed/*.png
 dist
