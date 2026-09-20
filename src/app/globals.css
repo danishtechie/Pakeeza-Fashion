@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Bodoni 72", "Iowan Old Style", "Baskerville", Georgia, serif;
+  --font-body: "Avenir Next", "Segoe UI", sans-serif;
+  --paper: #f4f0e8;
+  --ink: #171717;
+  --line: rgba(23, 23, 23, 0.12);
+  --accent: #c38b4a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--paper);
+  }
+  body {
+    @apply bg-ivory text-charcoal font-body antialiased;
+    background-image: radial-gradient(rgba(23, 23, 23, 0.055) 0.6px, transparent 0.6px);
+    background-size: 7px 7px;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-gold/30 text-charcoal;
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.gold.DEFAULT', #B08D57);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .container-luxe {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+  .section-heading {
+    @apply font-display text-3xl tracking-tight text-charcoal sm:text-5xl;
+  }
+  .eyebrow {
+    @apply text-[10px] font-semibold uppercase tracking-widest2 text-gold;
+  }
+  .luxe-link {
+    @apply relative inline-block transition-colors duration-300 hover:text-gold;
+  }
+  .luxe-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-gold transition-transform duration-300;
+  }
+  .luxe-link:hover::after {
+    @apply origin-left scale-x-100;
+  }
+  .luxe-button {
+    @apply relative overflow-hidden rounded-full bg-charcoal px-6 py-3 text-sm text-ivory transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest hover:shadow-lg;
+  }
+  .luxe-button::before {
+    content: "";
+    @apply absolute inset-0 -translate-x-full bg-white/10 transition-transform duration-500;
+  }
+  .luxe-button:hover::before {
+    @apply translate-x-0;
+  }
+  .surface-line {
+    @apply border border-charcoal/10 bg-ivory/75 backdrop-blur-sm;
+  }
+}
+
+@layer components {
+  .admin-shell {
+    background-image: linear-gradient(135deg, rgba(224, 185, 120, 0.08), transparent 35%), radial-gradient(rgba(23, 23, 23, 0.035) 0.6px, transparent 0.6px);
+    background-size: auto, 7px 7px;
+  }
+
+  .admin-main {
+    animation: admin-reveal 0.55s ease-out both;
+  }
+
+  .admin-shell main .rounded-xl.border.border-charcoal\/10.bg-ivory,
+  .admin-shell main .rounded-xl.border.border-charcoal\/10.bg-cream\/40 {
+    border-color: rgba(23, 23, 23, 0.09);
+    box-shadow: 0 14px 35px rgba(23, 23, 23, 0.045);
+    transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
+  }
+
+  .admin-shell main .rounded-xl.border.border-charcoal\/10.bg-ivory:hover {
+    border-color: rgba(195, 139, 74, 0.3);
+  }
+
+  .admin-shell table thead tr {
+    background: rgba(232, 225, 213, 0.35);
+  }
+
+  .admin-shell table tbody tr {
+    transition: background-color 180ms ease;
+  }
+
+  .admin-shell table tbody tr:hover {
+    background: rgba(195, 139, 74, 0.055);
+  }
+
+  .admin-shell input:not([type="checkbox"]),
+  .admin-shell select,
+  .admin-shell textarea {
+    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+
+  .admin-shell input:not([type="checkbox"]):focus,
+  .admin-shell select:focus,
+  .admin-shell textarea:focus {
+    border-color: var(--accent);
+    background: #fffdf8;
+    box-shadow: 0 0 0 3px rgba(195, 139, 74, 0.12);
+  }
+}
+
+@keyframes admin-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

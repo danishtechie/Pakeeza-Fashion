@@ -1,0 +1,11 @@
+node_modules
+.next
+.env
+.env.local
+*.db
+*.db-journal
+/public/uploads/*
+!/public/uploads/.gitkeep
+/public/seed/*
+!/public/seed/.gitkeep
+dist
