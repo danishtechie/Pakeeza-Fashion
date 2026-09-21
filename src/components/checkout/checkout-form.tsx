@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCartStore, cartSubtotal } from "@/lib/cart-store";
@@ -46,10 +46,66 @@ interface OrderResult {
 export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAdvancePercent, currency }: Props) {
   const { lines, clear } = useCartStore();
   const [form, setForm] = useState<FormState>(initialForm);
+  const [authState, setAuthState] = useState<"loading" | "needs-login" | "ready">("loading");
+  const [authForm, setAuthForm] = useState({ fullName: "", mobile: "", email: "", password: "" });
   const [orderType, setOrderType] = useState<"STANDARD" | "COD">("STANDARD");
   const [submitting, setSubmitting] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
   const [result, setResult] = useState<OrderResult | null>(null);
+
+  useEffect(() => {
+    async function loadSession() {
+      try {
+        const res = await fetch("/api/customer/session", { method: "GET" });
+        const data = await res.json();
+        setAuthState(data.authenticated ? "ready" : "needs-login");
+        if (data.customer) {
+          setForm((current) => ({
+            ...current,
+            fullName: data.customer.name ?? current.fullName,
+            mobile: data.customer.mobile ?? current.mobile,
+            email: data.customer.email ?? current.email,
+          }));
+        }
+      } catch {
+        setAuthState("needs-login");
+      }
+    }
+
+    void loadSession();
+  }, []);
+
+  async function signInCustomer() {
+    try {
+      const res = await fetch("/api/customer/session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: authForm.fullName || form.fullName,
+          mobile: authForm.mobile || form.mobile,
+          email: authForm.email || form.email,
+          password: authForm.password,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        toast(data.error || "Please complete the account form to continue.", "error");
+        return;
+      }
+
+      setAuthState("ready");
+      setForm((current) => ({
+        ...current,
+        fullName: data.customer.name ?? current.fullName,
+        mobile: data.customer.mobile ?? current.mobile,
+        email: data.customer.email ?? current.email,
+      }));
+      toast("Signed in successfully. You can now place your order.", "success");
+    } catch {
+      toast("Unable to sign in right now. Please try again.", "error");
+    }
+  }
 
   const subtotal = cartSubtotal(lines);
   const effectiveDeliveryFee = freeDeliveryAbove != null && subtotal >= freeDeliveryAbove ? 0 : deliveryFee;
@@ -63,6 +119,10 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (lines.length === 0) return;
+    if (authState !== "ready") {
+      toast("Please sign in before checkout.", "error");
+      return;
+    }
     setSubmitting(true);
     setFieldErrors({});
 
@@ -109,6 +169,42 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
 
   if (result) {
     return <OrderSuccess result={result} />;
+  }
+
+  if (authState === "loading") {
+    return (
+      <div className="flex min-h-[260px] items-center justify-center rounded-xl border border-charcoal/10 bg-cream/30 text-sm text-charcoal/60">
+        Loading your secure checkout…
+      </div>
+    );
+  }
+
+  if (authState === "needs-login") {
+    return (
+      <div className="mx-auto max-w-lg rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-lg shadow-charcoal/5">
+        <h2 className="mb-4 font-display text-2xl">Sign in to continue</h2>
+        <p className="mb-6 text-sm text-charcoal/60">Create a secure customer account before checkout so your order is tied to a real buyer.</p>
+        <div className="grid gap-4">
+          <Field label="Full name">
+            <input value={authForm.fullName || form.fullName} onChange={(e) => setAuthForm((f) => ({ ...f, fullName: e.target.value }))} className={inputClass} />
+          </Field>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="Mobile number">
+              <input value={authForm.mobile || form.mobile} onChange={(e) => setAuthForm((f) => ({ ...f, mobile: e.target.value }))} className={inputClass} />
+            </Field>
+            <Field label="Email address">
+              <input type="email" value={authForm.email || form.email} onChange={(e) => setAuthForm((f) => ({ ...f, email: e.target.value }))} className={inputClass} />
+            </Field>
+          </div>
+          <Field label="Create password">
+            <input type="password" value={authForm.password} onChange={(e) => setAuthForm((f) => ({ ...f, password: e.target.value }))} className={inputClass} placeholder="Minimum 6 characters" />
+          </Field>
+          <button type="button" onClick={signInCustomer} className="rounded-full bg-charcoal px-5 py-3 text-sm text-ivory hover:bg-forest">
+            Continue to checkout
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (lines.length === 0) {

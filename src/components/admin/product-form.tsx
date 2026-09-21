@@ -99,8 +99,8 @@ export function ProductForm({ categories, initial }: { categories: Category[]; i
 
     const payload = {
       ...form,
-      price: Math.round(Number(form.price) * 100),
-      salePrice: form.salePrice ? Math.round(Number(form.salePrice) * 100) : undefined,
+      price: Number(form.price),
+      salePrice: form.salePrice ? Number(form.salePrice) : undefined,
       variants: form.variants.map((v) => ({ ...v, size: v.size || undefined, color: v.color || undefined })),
     };
 
@@ -191,10 +191,10 @@ export function ProductForm({ categories, initial }: { categories: Category[]; i
         <Section title="Pricing">
           <div className="grid grid-cols-2 gap-4">
             <Field label="Price (₹)" error={errors.price}>
-              <input required type="number" step="0.01" min="0" value={form.price / 100 || ""} onChange={(e) => set("price", Number(e.target.value) * 100)} className={inputClass} />
+              <input required type="number" step="0.01" min="0" value={form.price ? form.price / 100 : ""} onChange={(e) => set("price", Math.round(Number(e.target.value || 0) * 100))} className={inputClass} />
             </Field>
             <Field label="Sale Price (₹, optional)" error={errors.salePrice}>
-              <input type="number" step="0.01" min="0" value={form.salePrice ? form.salePrice / 100 : ""} onChange={(e) => set("salePrice", e.target.value ? Number(e.target.value) * 100 : null)} className={inputClass} />
+                <input type="number" step="0.01" min="0" value={form.salePrice ? form.salePrice / 100 : ""} onChange={(e) => set("salePrice", e.target.value ? Math.round(Number(e.target.value) * 100) : null)} className={inputClass} />
             </Field>
           </div>
         </Section>

@@ -3,6 +3,7 @@ import { createOrderSchema } from "@/lib/validation/checkout";
 import { createOrder, OrderError } from "@/server/orders";
 import { rateLimit, clientKey } from "@/lib/rate-limit";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
+import { getCustomerSessionFromRequest } from "@/lib/customer-session";
 
 export async function POST(req: Request) {
   const key = `create-order:${clientKey(req)}`;
@@ -12,6 +13,11 @@ export async function POST(req: Request) {
       { error: "Too many requests. Please wait a moment and try again." },
       { status: 429 }
     );
+  }
+
+  const customerSession = getCustomerSessionFromRequest(req);
+  if (!customerSession) {
+    return NextResponse.json({ error: "Please sign in before completing checkout." }, { status: 401 });
   }
 
   let body: unknown;

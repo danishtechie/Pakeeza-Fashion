@@ -99,7 +99,11 @@ export function ShopFilters({ categories }: { categories: Category[] }) {
         <SlidersHorizontal size={15} /> Filters
       </button>
 
-      <aside className="hidden w-56 flex-shrink-0 lg:block">{content}</aside>
+      <aside className="hidden w-72 flex-shrink-0 lg:block">
+        <div className="rounded-2xl border border-charcoal/10 bg-ivory/90 p-5 shadow-[0_16px_40px_rgba(17,17,17,0.08)] backdrop-blur-sm">
+          {content}
+        </div>
+      </aside>
 
       <AnimatePresence>
         {mobileOpen && (
@@ -116,7 +120,7 @@ export function ShopFilters({ categories }: { categories: Category[] }) {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.28 }}
-              className="fixed left-0 top-0 z-50 h-full w-80 overflow-y-auto bg-ivory p-6 lg:hidden"
+              className="fixed left-0 top-0 z-50 h-full w-80 overflow-y-auto border-r border-charcoal/10 bg-ivory p-6 shadow-xl lg:hidden"
             >
               <div className="mb-6 flex items-center justify-between">
                 <span className="font-medium">Filters</span>
@@ -133,9 +137,9 @@ export function ShopFilters({ categories }: { categories: Category[] }) {
 
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div>
-      <h4 className="mb-3 text-xs font-medium uppercase tracking-widest2 text-charcoal/50">{title}</h4>
-      <div className="flex flex-col gap-2">{children}</div>
+    <div className="rounded-xl border border-charcoal/10 bg-cream/40 p-3">
+      <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-charcoal/60">{title}</h4>
+      <div className="flex flex-col gap-2.5">{children}</div>
     </div>
   );
 }
@@ -144,7 +148,7 @@ function FilterOption({ label, active, onClick }: { label: string; active: boole
   return (
     <button
       onClick={onClick}
-      className={`text-left text-sm transition ${active ? "font-medium text-gold" : "text-charcoal/70 hover:text-charcoal"}`}
+      className={`w-full rounded-lg border px-2.5 py-2 text-left text-sm transition ${active ? "border-gold bg-gold/10 font-medium text-charcoal shadow-sm" : "border-transparent bg-transparent text-charcoal/70 hover:border-charcoal/10 hover:bg-charcoal/5 hover:text-charcoal"}`}
     >
       {label}
     </button>
