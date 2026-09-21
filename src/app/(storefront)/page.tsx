@@ -24,7 +24,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           Please enter a valid email address to subscribe.
         </div>
       )}
-      <HeroSection />
+      <HeroSection product={featured[0]} />
 
       {/* Featured Categories */}
       <section className="container-luxe py-16 sm:py-24">

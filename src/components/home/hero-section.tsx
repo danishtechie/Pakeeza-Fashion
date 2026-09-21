@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 // NOTE: This was originally animated with framer-motion's initial-opacity-0
 // + animate-to-1 pattern. In practice that left the whole hero permanently
@@ -16,7 +17,18 @@ import Link from "next/link";
 // original build referenced Unsplash photo IDs that were never actually
 // verified as live (the build sandbox couldn't reach images.unsplash.com
 // to check), and one of them was dead. A gradient can't 404.
-export function HeroSection() {
+type HeroProduct = {
+  name: string;
+  price: number;
+  salePrice: number | null;
+  thumbnail: string;
+};
+
+export function HeroSection({ product }: { product?: HeroProduct }) {
+  const productImage = product?.thumbnail || "/seed/product-premium-womens-suit-1.png";
+  const productName = product?.name || "Signature Fashion Edit";
+  const productPrice = product?.salePrice ?? product?.price ?? 2800;
+
   return (
     <section className="relative overflow-hidden bg-[#111111] text-ivory">
       <div
@@ -76,14 +88,21 @@ export function HeroSection() {
                   <span className="text-xs uppercase tracking-[0.2em] text-[#F7C767]">Curated style</span>
                   <span className="text-xl font-black text-white">✦</span>
                 </div>
-                <div className="relative h-[260px] overflow-hidden rounded-[16px] bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.2),transparent_18%),linear-gradient(180deg,#3b2d2d_0%,#1d1d1d_100%)]">
-                  <div className="absolute left-5 top-5 h-20 w-20 rounded-full border border-white/15" />
+                <div className="relative h-[260px] overflow-hidden rounded-[16px] bg-[#292020]">
+                  <Image
+                    src={productImage}
+                    alt={productName}
+                    fill
+                    sizes="380px"
+                    className="object-cover object-center transition duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8 rounded-[18px] border border-white/10 bg-black/25 p-4 backdrop-blur-sm">
                     <div className="flex items-baseline justify-between">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-white/65">Featured</span>
-                      <span className="text-2xl font-black text-[#F7C767]">₹2,800</span>
+                      <span className="text-2xl font-black text-[#F7C767]">₹{productPrice.toLocaleString("en-IN")}</span>
                     </div>
-                    <p className="mt-2 text-sm font-medium text-white">Signature Fashion Edit</p>
+                    <p className="mt-2 line-clamp-1 text-sm font-medium text-white">{productName}</p>
                   </div>
                 </div>
               </div>
