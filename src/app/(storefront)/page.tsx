@@ -30,7 +30,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       <section className="container-luxe py-16 sm:py-24">
         <div className="mb-10 text-center">
           <p className="eyebrow">Shop by Category</p>
-          <h2 className="section-heading mt-2">Premium Sportswear Collections</h2>
+          <h2 className="section-heading mt-2">Curated Fashion Collections</h2>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {categories.slice(0, 6).map((c) => (
@@ -121,18 +121,18 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         />
       )}
 
-      {/* Why MANNAT SPORTSWEAR */}
+      {/* Why Fashion */}
       <section className="bg-[#101010] py-16 text-ivory sm:py-20">
         <div className="container-luxe">
           <div className="mb-12 text-center">
             <p className="eyebrow text-[#F7C767]">Our Promise</p>
-            <h2 className="section-heading mt-2 text-ivory">Why MANNAT SPORTSWEAR</h2>
+            <h2 className="section-heading mt-2 text-ivory">Why Fashion</h2>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {[
-              { icon: Gem, label: "Curated Sportswear" },
-              { icon: Sparkles, label: "Performance Fabrics" },
-              { icon: ShieldCheck, label: "Authentic Styles" },
+              { icon: Gem, label: "Curated Style" },
+              { icon: Sparkles, label: "Premium Fabrics" },
+              { icon: ShieldCheck, label: "Authentic Looks" },
               { icon: ShieldCheck, label: "Secure Ordering" },
               { icon: MessageCircle, label: "WhatsApp Support" },
               { icon: Truck, label: "COD Available" },

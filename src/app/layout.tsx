@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
     openGraph: {
       title: `${storeName} — ${tagline}`,
-      description: "Premium sportswear and football gear, delivered across India.",
+      description: "Premium fashion essentials and elegant everyday looks, delivered across India.",
       siteName: storeName,
       type: "website",
     },

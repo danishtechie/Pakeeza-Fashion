@@ -16,8 +16,6 @@ const config: Config = {
         burgundy: "#A31C2B",
         "burgundy-soft": "#CB3B4E",
         red: "#B71D2A",
-        "sports-red": "#BB1E2D",
-        "sports-gold": "#F6C76E",
         "steel": "#EDEDED",
       },
       fontFamily: {

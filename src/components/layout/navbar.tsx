@@ -8,9 +8,9 @@ import { useCartStore, cartCount } from "@/lib/cart-store";
 
 const navLinks = [
   { href: "/shop", label: "Shop All" },
-  { href: "/shop?category=football", label: "Football" },
-  { href: "/shop?category=football-cleats", label: "Football Cleats" },
-  { href: "/shop?category=full-sleeves-jerseys", label: "Jerseys" },
+  { href: "/shop?category=women", label: "Women" },
+  { href: "/shop?category=men", label: "Men" },
+  { href: "/shop?category=accessories", label: "Accessories" },
   { href: "/shop?sort=newest", label: "New Arrivals" },
 ];
 

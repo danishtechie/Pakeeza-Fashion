@@ -23,21 +23,21 @@ export function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 80% 20%, rgba(240,179,58,0.3) 0%, rgba(240,179,58,0) 18%), radial-gradient(circle at 15% 80%, rgba(183,29,42,0.42) 0%, rgba(183,29,42,0) 34%), linear-gradient(120deg, #0b0b0b 0%, #191919 52%, #261510 100%)",
+            "radial-gradient(circle at 80% 20%, rgba(240,179,58,0.28) 0%, rgba(240,179,58,0) 18%), radial-gradient(circle at 15% 85%, rgba(183,29,42,0.3) 0%, rgba(183,29,42,0) 32%), linear-gradient(120deg, #0b0b0b 0%, #191919 52%, #1f1a18 100%)",
         }}
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       <div className="container-luxe relative z-10 grid min-h-[82vh] items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-xl animate-fade-up">
-          <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-sports-gold">
-            Premium Sportswear & Gear
+          <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#F7C767]">
+            Premium fashion essentials
           </p>
           <h1 className="text-5xl leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-            PREMIUM SPORTS GEAR
+            MODERN FASHION
           </h1>
           <p className="mt-5 max-w-lg text-sm leading-6 text-white/75 sm:text-base">
-            Football jerseys, football cleats, teamwear, tracksuits, and performance essentials built for style, comfort, and match-day confidence.
+            Look polished, stay confident, and shop elevated essentials designed for everyday wear, special moments, and effortless statement style.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -45,18 +45,18 @@ export function HeroSection() {
               Shop Now
             </Link>
             <Link href="/shop" className="rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-white/10">
-              Explore Collection
+              View Collection
             </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.2em] text-white/70">
-            <span>Football Jerseys</span>
+            <span>Casual</span>
             <span>•</span>
-            <span>Football Cleats</span>
+            <span>Elegant</span>
             <span>•</span>
-            <span>Teamwear</span>
+            <span>Luxury</span>
             <span>•</span>
-            <span>Tracksuits</span>
+            <span>Everyday</span>
           </div>
         </div>
 
@@ -71,19 +71,19 @@ export function HeroSection() {
                 <span className="rounded-full border border-[#F7C767]/40 px-2 py-1 text-[#F7C767]">New</span>
               </div>
 
-              <div className="mt-5 rounded-[18px] border border-white/10 bg-[linear-gradient(135deg,#90212a,#1e1c1d_52%,#0f0f0f)] p-4">
+              <div className="mt-5 rounded-[18px] border border-white/10 bg-[linear-gradient(135deg,#8a1f2e,#1f2124_52%,#111111)] p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#F7C767]">Champion quality</span>
-                  <span className="text-xl font-black text-white">⚽</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#F7C767]">Curated style</span>
+                  <span className="text-xl font-black text-white">✦</span>
                 </div>
-                <div className="relative h-[260px] overflow-hidden rounded-[16px] bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.2),transparent_18%),linear-gradient(180deg,#3f2124_0%,#1d1d1d_100%)]">
+                <div className="relative h-[260px] overflow-hidden rounded-[16px] bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.2),transparent_18%),linear-gradient(180deg,#3b2d2d_0%,#1d1d1d_100%)]">
                   <div className="absolute left-5 top-5 h-20 w-20 rounded-full border border-white/15" />
                   <div className="absolute bottom-8 left-8 right-8 rounded-[18px] border border-white/10 bg-black/25 p-4 backdrop-blur-sm">
                     <div className="flex items-baseline justify-between">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-white/65">Featured</span>
                       <span className="text-2xl font-black text-[#F7C767]">₹2,800</span>
                     </div>
-                    <p className="mt-2 text-sm font-medium text-white">Adidas F50 Laceless</p>
+                    <p className="mt-2 text-sm font-medium text-white">Signature Fashion Edit</p>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@ export function HeroSection() {
               <div className="mt-5 grid grid-cols-3 gap-3 text-center text-[10px] uppercase tracking-[0.18em] text-white/70">
                 <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                   <div className="text-lg font-black text-[#F7C767]">200+</div>
-                  <div className="mt-1">Styles</div>
+                  <div className="mt-1">Looks</div>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/5 p-3">
                   <div className="text-lg font-black text-[#F7C767]">COD</div>

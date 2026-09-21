@@ -52,17 +52,17 @@ export function Footer({ settings }: { settings: SettingsLike }) {
           <ul className="flex flex-col gap-2.5 text-sm text-white/70">
             <li><Link href="/" className="hover:text-[#F7C767]">Home</Link></li>
             <li><Link href="/shop" className="hover:text-[#F7C767]">Shop All</Link></li>
-            <li><Link href="/shop?category=football" className="hover:text-[#F7C767]">Football</Link></li>
-            <li><Link href="/shop?category=full-sleeves-jerseys" className="hover:text-[#F7C767]">Jerseys</Link></li>
+            <li><Link href="/shop?category=women" className="hover:text-[#F7C767]">Women</Link></li>
+            <li><Link href="/shop?category=men" className="hover:text-[#F7C767]">Men</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="eyebrow mb-4 text-white/60">Categories</h4>
           <ul className="flex flex-col gap-2.5 text-sm text-white/70">
-            <li><Link href="/shop?category=football-cleats" className="hover:text-[#F7C767]">Football Cleats</Link></li>
-            <li><Link href="/shop?category=full-sleeves-jerseys" className="hover:text-[#F7C767]">Full Sleeve Jerseys</Link></li>
-            <li><Link href="/shop?category=grip-socks" className="hover:text-[#F7C767]">Grip Socks & Sleves</Link></li>
+            <li><Link href="/shop?category=dresses" className="hover:text-[#F7C767]">Dresses</Link></li>
+            <li><Link href="/shop?category=kurta-sets" className="hover:text-[#F7C767]">Kurta Sets</Link></li>
+            <li><Link href="/shop?category=accessories" className="hover:text-[#F7C767]">Accessories</Link></li>
             <li><Link href="/shop" className="hover:text-[#F7C767]">More Categories</Link></li>
           </ul>
         </div>
