@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { effectivePrice, formatPaise } from "@/lib/money";
 
 // NOTE: This was originally animated with framer-motion's initial-opacity-0
 // + animate-to-1 pattern. In practice that left the whole hero permanently
@@ -27,7 +28,9 @@ type HeroProduct = {
 export function HeroSection({ product }: { product?: HeroProduct }) {
   const productImage = product?.thumbnail || "/seed/product-premium-womens-suit-1.png";
   const productName = product?.name || "Signature Fashion Edit";
-  const productPrice = product?.salePrice ?? product?.price ?? 2800;
+  const productPrice = product
+    ? effectivePrice(product.price, product.salePrice)
+    : 280000;
 
   return (
     <section className="relative overflow-hidden bg-[#111111] text-ivory">
@@ -100,7 +103,7 @@ export function HeroSection({ product }: { product?: HeroProduct }) {
                   <div className="absolute bottom-8 left-8 right-8 rounded-[18px] border border-white/10 bg-black/25 p-4 backdrop-blur-sm">
                     <div className="flex items-baseline justify-between">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-white/65">Featured</span>
-                      <span className="text-2xl font-black text-[#F7C767]">₹{productPrice.toLocaleString("en-IN")}</span>
+                      <span className="text-2xl font-black text-[#F7C767]">{formatPaise(productPrice)}</span>
                     </div>
                     <p className="mt-2 line-clamp-1 text-sm font-medium text-white">{productName}</p>
                   </div>
