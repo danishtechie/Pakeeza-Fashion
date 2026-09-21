@@ -29,7 +29,7 @@ export default function WishlistPage() {
   return (
     <div className="container-luxe py-10 sm:py-14">
       <p className="eyebrow">Saved</p>
-      <h1 className="section-heading mt-2 mb-8">Your Wishlist</h1>
+      <h1 className="section-heading mt-2 mb-8 uppercase">Your Wishlist</h1>
 
       {loaded && products.length === 0 && (
         <div className="flex flex-col items-center gap-3 py-20 text-center text-charcoal/60">

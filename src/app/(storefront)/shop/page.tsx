@@ -30,9 +30,9 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
 
   return (
     <div className="container-luxe py-10 sm:py-14">
-      <div className="mb-8">
-        <p className="eyebrow">Shop</p>
-        <h1 className="section-heading mt-2">
+      <div className="mb-8 rounded-[24px] bg-[#111111] px-6 py-8 text-white shadow-[0_18px_45px_rgba(0,0,0,0.12)] sm:px-8">
+        <p className="eyebrow text-[#F7C767]">Shop</p>
+        <h1 className="section-heading mt-2 text-white">
           {collection ? `${collection} Collection` : gender ? `${gender === "WOMEN" ? "Women's" : "Men's"} Collection` : "All Products"}
         </h1>
       </div>
@@ -67,7 +67,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                     key={p}
                     href={`/shop?${params.toString()}`}
                     className={`flex h-9 w-9 items-center justify-center rounded-full text-sm ${
-                      p === page ? "bg-charcoal text-ivory" : "border border-charcoal/15 hover:border-charcoal"
+                      p === page ? "bg-[#F7C767] text-[#111111]" : "border border-white/10 bg-[#111111] text-white hover:border-[#F7C767]"
                     }`}
                   >
                     {p}

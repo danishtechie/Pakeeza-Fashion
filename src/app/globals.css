@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Bodoni 72", "Iowan Old Style", "Baskerville", Georgia, serif;
-  --font-body: "Avenir Next", "Segoe UI", sans-serif;
-  --paper: #f4f0e8;
-  --ink: #171717;
-  --line: rgba(23, 23, 23, 0.12);
-  --accent: #c38b4a;
+  --font-display: "Arial Black", "Segoe UI", sans-serif;
+  --font-body: "Segoe UI", "Noto Sans", sans-serif;
+  --paper: #f3efe9;
+  --ink: #0d0d0d;
+  --line: rgba(13, 13, 13, 0.12);
+  --accent: #f0b33a;
 }
 
 @layer base {
@@ -18,8 +18,7 @@
   }
   body {
     @apply bg-ivory text-charcoal font-body antialiased;
-    background-image: radial-gradient(rgba(23, 23, 23, 0.055) 0.6px, transparent 0.6px);
-    background-size: 7px 7px;
+    background: linear-gradient(180deg, #f3efe9 0%, #f8f4ee 100%);
   }
   h1, h2, h3, h4 {
     @apply font-display;
@@ -28,7 +27,7 @@
     @apply bg-gold/30 text-charcoal;
   }
   :focus-visible {
-    outline: 2px solid theme('colors.gold.DEFAULT', #B08D57);
+    outline: 2px solid theme('colors.gold.DEFAULT', #E9B857);
     outline-offset: 2px;
   }
 }
@@ -47,10 +46,10 @@
     @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
   }
   .section-heading {
-    @apply font-display text-3xl tracking-tight text-charcoal sm:text-5xl;
+    @apply font-display text-3xl uppercase tracking-[-0.04em] text-charcoal sm:text-5xl;
   }
   .eyebrow {
-    @apply text-[10px] font-semibold uppercase tracking-widest2 text-gold;
+    @apply text-[10px] font-semibold uppercase tracking-[0.2em] text-[#D39A2B];
   }
   .luxe-link {
     @apply relative inline-block transition-colors duration-300 hover:text-gold;

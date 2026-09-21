@@ -85,7 +85,7 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
   return (
     <div>
       {product.brand && <p className="eyebrow mb-2">{product.brand}</p>}
-      <h1 className="font-display text-3xl sm:text-4xl">{product.name}</h1>
+      <h1 className="font-display text-3xl uppercase tracking-[-0.04em] sm:text-4xl">{product.name}</h1>
 
       {product.avgRating != null && (
         <div className="mt-2 flex items-center gap-1.5 text-sm text-charcoal/60">
@@ -99,11 +99,11 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
       )}
 
       <div className="mt-4 flex items-center gap-3">
-        <span className="text-2xl font-medium">{formatPaise(eff)}</span>
+        <span className="text-2xl font-black text-[#111111]">{formatPaise(eff)}</span>
         {discount > 0 && (
           <>
             <span className="text-charcoal/40 line-through">{formatPaise(product.price)}</span>
-            <span className="rounded-full bg-burgundy/10 px-2 py-1 text-xs text-burgundy">-{discount}%</span>
+            <span className="rounded-full bg-[#B71D2A]/10 px-2 py-1 text-xs font-semibold text-[#B71D2A]">-{discount}%</span>
           </>
         )}
       </div>
@@ -120,7 +120,7 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
                 key={s}
                 onClick={() => setSize(s)}
                 className={`rounded-full border px-4 py-2 text-sm transition ${
-                  size === s ? "border-charcoal bg-charcoal text-ivory" : "border-charcoal/20 hover:border-charcoal"
+                  size === s ? "border-[#F7C767] bg-[#F7C767] text-[#111111]" : "border-charcoal/20 bg-white/70 hover:border-charcoal"
                 }`}
               >
                 {s}
@@ -139,7 +139,7 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
                 key={c}
                 onClick={() => setColor(c)}
                 className={`rounded-full border px-4 py-2 text-sm transition ${
-                  color === c ? "border-charcoal bg-charcoal text-ivory" : "border-charcoal/20 hover:border-charcoal"
+                  color === c ? "border-[#F7C767] bg-[#F7C767] text-[#111111]" : "border-charcoal/20 bg-white/70 hover:border-charcoal"
                 }`}
               >
                 {c}
@@ -151,7 +151,7 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
 
       <div className="mt-5 flex items-center gap-2">
         <p className="mr-2 text-xs font-medium uppercase tracking-widest2 text-charcoal/50">Qty</p>
-        <div className="flex items-center gap-3 rounded-full border border-charcoal/20 px-3 py-1.5">
+        <div className="flex items-center gap-3 rounded-full border border-charcoal/20 bg-white/70 px-3 py-1.5">
           <button aria-label="Decrease quantity" onClick={() => setQty((q) => Math.max(1, q - 1))} disabled={qty <= 1}>
             <Minus size={14} />
           </button>
@@ -174,14 +174,14 @@ export function ProductPurchasePanel({ product }: { product: ProductForPanel }) 
         <button
           onClick={() => handleAddToCart(false)}
           disabled={!inStock}
-          className="flex-1 rounded-full border border-charcoal py-3.5 text-sm transition hover:bg-charcoal hover:text-ivory disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex-1 rounded-full border border-[#111111] bg-white py-3.5 text-sm font-medium text-[#111111] transition hover:bg-[#111111] hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
         >
           Add to Cart
         </button>
         <button
           onClick={() => handleAddToCart(true)}
           disabled={!inStock}
-          className="flex-1 rounded-full bg-charcoal py-3.5 text-sm text-ivory transition hover:bg-forest disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex-1 rounded-full bg-[#111111] py-3.5 text-sm font-medium text-white transition hover:bg-[#B71D2A] disabled:cursor-not-allowed disabled:opacity-40"
         >
           Buy Now
         </button>

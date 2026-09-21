@@ -187,8 +187,8 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
 
   if (authState === "needs-login") {
     return (
-      <div className="mx-auto max-w-lg rounded-2xl border border-charcoal/10 bg-ivory p-6 shadow-lg shadow-charcoal/5">
-        <h2 className="mb-4 font-display text-2xl">Sign in to continue</h2>
+      <div className="mx-auto max-w-lg rounded-[24px] border border-charcoal/10 bg-[#111111] p-6 text-white shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+        <h2 className="mb-4 font-display text-2xl uppercase tracking-[-0.04em]">Sign in to continue</h2>
         <p className="mb-6 text-sm text-charcoal/60">Create a secure customer account before checkout so your order is tied to a real buyer.</p>
         <div className="grid gap-4">
           <Field label="Full name">
@@ -206,7 +206,7 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
           <Field label="Create password">
             <input type="password" value={authForm.password} onChange={(e) => setAuthForm((f) => ({ ...f, password: e.target.value }))} className={inputClass} placeholder="Minimum 6 characters" />
           </Field>
-          <button type="button" onClick={signInCustomer} className="rounded-full bg-charcoal px-5 py-3 text-sm text-ivory hover:bg-forest">
+          <button type="button" onClick={signInCustomer} className="rounded-full bg-[#F7C767] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd77d]">
             Continue to checkout
           </button>
         </div>
@@ -217,9 +217,9 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
   if (lines.length === 0) {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center text-charcoal/60">
-        <ShoppingBag size={40} strokeWidth={1} />
+        <ShoppingBag size={40} strokeWidth={1} className="text-[#D39A2B]" />
         <p>Your bag is empty — add something beautiful first.</p>
-        <Link href="/shop" className="rounded-full bg-charcoal px-6 py-2.5 text-sm text-ivory hover:bg-forest">
+        <Link href="/shop" className="rounded-full bg-[#111111] px-6 py-2.5 text-sm text-white hover:bg-[#B71D2A]">
           Continue Shopping
         </Link>
       </div>
@@ -322,8 +322,8 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
         </fieldset>
       </div>
 
-      <div className="h-fit rounded-xl border border-charcoal/10 bg-cream/40 p-6">
-        <h2 className="mb-4 font-display text-xl">Order Summary</h2>
+      <div className="h-fit rounded-[24px] border border-charcoal/10 bg-[#111111] p-6 text-white shadow-[0_18px_45px_rgba(0,0,0,0.14)]">
+        <h2 className="mb-4 font-display text-xl uppercase tracking-[-0.04em]">Order Summary</h2>
         <ul className="flex flex-col gap-4">
           {lines.map((l) => (
             <li key={l.variantId} className="flex gap-3">
@@ -354,7 +354,7 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
         <button
           type="submit"
           disabled={submitting}
-          className="mt-6 w-full rounded-full bg-charcoal py-3.5 text-sm text-ivory transition hover:bg-forest disabled:opacity-50"
+          className="mt-6 w-full rounded-full bg-[#F7C767] py-3.5 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd77d] disabled:opacity-50"
         >
           {submitting ? "Placing Order…" : "Place Order"}
         </button>
@@ -432,4 +432,4 @@ function OrderTypeOption({
   );
 }
 
-const inputClass = "rounded-md border border-charcoal/20 bg-ivory px-3.5 py-2.5 text-sm outline-none focus:border-gold";
+const inputClass = "rounded-md border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#F7C767]";

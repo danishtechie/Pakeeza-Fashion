@@ -10,16 +10,16 @@ import { Toaster } from "@/components/ui/toaster";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings().catch(() => null);
-  const storeName = settings?.storeName ?? "Pakeeza Fashion";
-  const tagline = settings?.tagline ?? "Where Heritage Meets Modern Elegance";
+  const storeName = settings?.storeName ?? "Fashion";
+  const tagline = settings?.tagline ?? "Premium Fashion & Style for Everyday Confidence";
   return {
     title: { default: `${storeName} — ${tagline}`, template: `%s | ${storeName}` },
     description:
-      "Premium Pakistani and Kashmiri fashion — ladies' and gents' ethnic wear, Kashmiri shawls, salwar suits, kurtas and dupattas. Order on WhatsApp with COD available across India.",
+      "Modern fashion essentials, premium styling, and everyday looks with COD available across India.",
     metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
     openGraph: {
       title: `${storeName} — ${tagline}`,
-      description: "Premium Pakistani and Kashmiri fashion, delivered across India.",
+      description: "Premium sportswear and football gear, delivered across India.",
       siteName: storeName,
       type: "website",
     },

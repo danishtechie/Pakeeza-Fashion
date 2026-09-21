@@ -7,7 +7,7 @@ export default async function StorefrontLayout({ children }: { children: React.R
   const settings = await getSettings().catch(() => null);
   return (
     <CartProvider>
-      <Navbar storeName={settings?.storeName ?? "Pakeeza Fashion"} />
+      <Navbar storeName={settings?.storeName ?? "Fashion"} />
       <main className="min-h-[60vh]">{children}</main>
       <Footer settings={settings} />
     </CartProvider>

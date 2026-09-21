@@ -12,15 +12,17 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div className="container-luxe max-w-2xl py-14">
-      <h1 className="section-heading mb-6">Frequently Asked Questions</h1>
-      <div className="flex flex-col divide-y divide-charcoal/10">
-        {faqs.map((f) => (
-          <details key={f.q} className="group py-4">
-            <summary className="cursor-pointer list-none text-sm font-medium marker:content-none">{f.q}</summary>
-            <p className="mt-2 text-sm leading-relaxed text-charcoal/70">{f.a}</p>
-          </details>
-        ))}
+    <div className="container-luxe max-w-3xl py-14">
+      <div className="rounded-[24px] bg-[#111111] p-6 text-white shadow-[0_20px_45px_rgba(0,0,0,0.12)] sm:p-8">
+        <h1 className="section-heading mb-6 text-white">Frequently Asked Questions</h1>
+        <div className="flex flex-col divide-y divide-white/10">
+          {faqs.map((f) => (
+            <details key={f.q} className="group py-4">
+              <summary className="cursor-pointer list-none text-sm font-medium marker:content-none text-white">{f.q}</summary>
+              <p className="mt-2 text-sm leading-relaxed text-white/70">{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   );

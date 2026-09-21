@@ -30,14 +30,14 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       <section className="container-luxe py-16 sm:py-24">
         <div className="mb-10 text-center">
           <p className="eyebrow">Shop by Category</p>
-          <h2 className="section-heading mt-2">Curated Collections</h2>
+          <h2 className="section-heading mt-2">Premium Sportswear Collections</h2>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {categories.slice(0, 6).map((c) => (
             <Link
               key={c.id}
               href={`/shop?category=${c.slug}`}
-              className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-cream"
+              className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-[#141414]"
             >
               <Image
                 src={c.imageUrl || "/placeholder-product.svg"}
@@ -46,8 +46,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 sizes="200px"
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
-              <span className="absolute bottom-3 left-3 right-3 text-sm font-medium text-ivory">{c.name}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b]/85 via-[#0b0b0b]/15 to-transparent" />
+              <span className="absolute bottom-3 left-3 right-3 text-sm font-semibold uppercase tracking-[0.18em] text-ivory/95">{c.name}</span>
             </Link>
           ))}
         </div>
@@ -55,40 +55,44 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
       {/* Trending Products */}
       {trending.length > 0 && (
-        <section className="container-luxe py-10 sm:py-16">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <p className="eyebrow">Trending Now</p>
-              <h2 className="section-heading mt-2">Customer Favorites</h2>
+        <section className="bg-[#111111] py-10 text-white sm:py-16">
+          <div className="container-luxe">
+            <div className="mb-8 flex items-end justify-between">
+              <div>
+                <p className="eyebrow text-[#F7C767]">Featured Products</p>
+                <h2 className="section-heading mt-2 text-white">Handpicked premium fashion essentials</h2>
+              </div>
+              <Link href="/shop?sort=trending" className="hidden text-sm text-[#F7C767] hover:underline sm:inline">
+                View All →
+              </Link>
             </div>
-            <Link href="/shop?sort=trending" className="hidden text-sm text-gold hover:underline sm:inline">
-              View All →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-            {trending.map((p, i) => (
-              <ProductCard key={p.id} product={{ ...p, reviewCount: 0, rating: 5 }} index={i} />
-            ))}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+              {trending.map((p, i) => (
+                <ProductCard key={p.id} product={{ ...p, reviewCount: 0, rating: 5 }} index={i} />
+              ))}
+            </div>
           </div>
         </section>
       )}
 
       {/* New Arrivals */}
       {newArrivals.length > 0 && (
-        <section className="container-luxe py-10 sm:py-16">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <p className="eyebrow">Just Landed</p>
-              <h2 className="section-heading mt-2">New Arrivals</h2>
+        <section className="bg-[#f5f1ea] py-10 sm:py-16">
+          <div className="container-luxe">
+            <div className="mb-8 flex items-end justify-between">
+              <div>
+                <p className="eyebrow text-[#B71D2A]">Just Landed</p>
+                <h2 className="section-heading mt-2">New Arrivals</h2>
+              </div>
+              <Link href="/shop?sort=newest" className="hidden text-sm text-[#B71D2A] hover:underline sm:inline">
+                View All →
+              </Link>
             </div>
-            <Link href="/shop?sort=newest" className="hidden text-sm text-gold hover:underline sm:inline">
-              View All →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-            {newArrivals.map((p, i) => (
-              <ProductCard key={p.id} product={{ ...p, reviewCount: 0, rating: 5 }} index={i} />
-            ))}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+              {newArrivals.map((p, i) => (
+                <ProductCard key={p.id} product={{ ...p, reviewCount: 0, rating: 5 }} index={i} />
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -117,25 +121,25 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         />
       )}
 
-      {/* Why Pakeeza Fashion */}
-      <section className="bg-forest py-16 text-ivory sm:py-20">
+      {/* Why MANNAT SPORTSWEAR */}
+      <section className="bg-[#101010] py-16 text-ivory sm:py-20">
         <div className="container-luxe">
           <div className="mb-12 text-center">
-            <p className="eyebrow text-gold-soft">Our Promise</p>
-            <h2 className="section-heading mt-2 text-ivory">Why Pakeeza Fashion</h2>
+            <p className="eyebrow text-[#F7C767]">Our Promise</p>
+            <h2 className="section-heading mt-2 text-ivory">Why MANNAT SPORTSWEAR</h2>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {[
-              { icon: Gem, label: "Curated Fashion" },
-              { icon: Sparkles, label: "Quality Fabrics" },
+              { icon: Gem, label: "Curated Sportswear" },
+              { icon: Sparkles, label: "Performance Fabrics" },
               { icon: ShieldCheck, label: "Authentic Styles" },
               { icon: ShieldCheck, label: "Secure Ordering" },
               { icon: MessageCircle, label: "WhatsApp Support" },
               { icon: Truck, label: "COD Available" },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-3 text-center">
-                <Icon size={26} className="text-gold-soft" strokeWidth={1.4} />
-                <span className="text-xs tracking-wide text-ivory/80">{label}</span>
+                <Icon size={26} className="text-[#F7C767]" strokeWidth={1.4} />
+                <span className="text-xs tracking-[0.14em] text-ivory/80">{label}</span>
               </div>
             ))}
           </div>

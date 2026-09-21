@@ -70,7 +70,7 @@ export function ProductCard({ product, index = 0 }: { product: ProductCardData; 
       style={{ animationDelay: `${Math.min(index, 6) * 0.05}s` }}
     >
       <Link href={`/product/${product.slug}`} className="block">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-none bg-cream shadow-sm transition-shadow duration-500 group-hover:shadow-xl">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-[18px] border border-black/5 bg-[#f7f3ee] shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
           <Image
             src={product.thumbnail}
             alt={product.name}
@@ -84,7 +84,7 @@ export function ProductCard({ product, index = 0 }: { product: ProductCardData; 
             </span>
           )}
           {discount > 0 && (
-            <span className="absolute right-3 top-3 rounded-sm bg-ivory/90 px-2.5 py-1 text-[10px] font-semibold text-burgundy">
+            <span className="absolute right-3 top-3 rounded-sm bg-[#111111]/90 px-2.5 py-1 text-[10px] font-semibold text-[#F7C767]">
               -{discount}%
             </span>
           )}
@@ -103,7 +103,7 @@ export function ProductCard({ product, index = 0 }: { product: ProductCardData; 
           {product.inStock ? (
             <button
               onClick={quickAdd}
-              className="absolute inset-x-3 bottom-3 flex translate-y-10 items-center justify-center gap-1.5 rounded-sm bg-charcoal/95 py-2.5 text-xs text-ivory opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+              className="absolute inset-x-3 bottom-3 flex translate-y-10 items-center justify-center gap-1.5 rounded-full bg-[#111111] py-2.5 text-xs font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
             >
               <Plus size={13} /> Quick Add
             </button>
@@ -114,10 +114,10 @@ export function ProductCard({ product, index = 0 }: { product: ProductCardData; 
           )}
         </div>
 
-        <div className="mt-3 space-y-1">
-          <h3 className="line-clamp-1 text-sm text-charcoal/90">{product.name}</h3>
+        <div className="mt-3 space-y-1.5">
+          <h3 className="line-clamp-1 text-sm font-medium text-charcoal/90">{product.name}</h3>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">{formatPaise(eff)}</span>
+            <span className="text-sm font-bold text-[#111111]">{formatPaise(eff)}</span>
             {discount > 0 && (
               <span className="text-xs text-charcoal/40 line-through">{formatPaise(product.price)}</span>
             )}

@@ -61,8 +61,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <div className="container-luxe py-8 sm:py-12">
       {/* Breadcrumb */}
       <nav className="mb-6 text-xs text-charcoal/50" aria-label="Breadcrumb">
-        <a href="/" className="hover:text-gold">Home</a> / <a href="/shop" className="hover:text-gold">Shop</a> /{" "}
-        <a href={`/shop?category=${product.category.slug}`} className="hover:text-gold">{product.category.name}</a> /{" "}
+        <a href="/" className="hover:text-[#D39A2B]">Home</a> / <a href="/shop" className="hover:text-[#D39A2B]">Shop</a> /{" "}
+        <a href={`/shop?category=${product.category.slug}`} className="hover:text-[#D39A2B]">{product.category.name}</a> /{" "}
         <span className="text-charcoal">{product.name}</span>
       </nav>
 
@@ -90,8 +90,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <ReviewsSection reviews={product.reviews} avgRating={avgRating} />
 
       {related.length > 0 && (
-        <section className="mt-16 border-t border-charcoal/10 pt-12">
-          <h2 className="section-heading mb-8">You May Also Like</h2>
+        <section className="mt-16 rounded-[24px] border border-charcoal/10 bg-[#111111] px-5 py-8 text-white sm:px-8">
+          <h2 className="section-heading mb-8 text-white">You May Also Like</h2>
           <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
             {related.map((p, i) => (
               <ProductCard key={p.id} product={{ ...p, inStock: true }} index={i} />

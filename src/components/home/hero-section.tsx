@@ -18,45 +18,92 @@ import Link from "next/link";
 // to check), and one of them was dead. A gradient can't 404.
 export function HeroSection() {
   return (
-    <section
-      className="relative flex min-h-[82vh] items-center overflow-hidden bg-charcoal text-ivory"
-      style={{
-        backgroundImage:
-          "radial-gradient(circle at 78% 20%, rgba(224,185,120,.35), transparent 20%), radial-gradient(ellipse at 15% 85%, #8D3040 0%, transparent 48%), linear-gradient(120deg, #171717 0%, #163D35 100%)",
-      }}
-    >
-      <div className="absolute right-[12%] top-[18%] h-32 w-32 animate-float rounded-full border border-gold/30" />
-      <div className="absolute -bottom-24 right-[8%] h-80 w-80 rounded-full border border-ivory/10" />
-      <div className="container-luxe relative z-10">
-        <p className="eyebrow animate-fade-up text-gold-soft">
-          Where Heritage Meets Modern Elegance
-        </p>
-        <h1
-          className="animate-fade-up mt-4 max-w-3xl font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl"
-          style={{ animationDelay: "0.1s" }}
-        >
-          Heritage, cut for the present.
-        </h1>
-        <p
-          className="animate-fade-up mt-5 max-w-md text-sm text-ivory/75 sm:text-base"
-          style={{ animationDelay: "0.2s" }}
-        >
-          Hand-embroidered kurtas, Pashmina shawls and festive suits, crafted
-          with heritage technique, styled for modern life.
-        </p>
-        <div
-          className="animate-fade-up mt-8 flex flex-wrap gap-3"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <Link href="/shop?gender=WOMEN" className="luxe-button bg-ivory text-charcoal hover:bg-gold-soft">
-            Shop Women
-          </Link>
-          <Link href="/shop?gender=MEN" className="rounded-full border border-ivory/40 px-6 py-3 text-sm text-ivory transition duration-300 hover:-translate-y-0.5 hover:border-ivory hover:bg-ivory/10">
-            Shop Men
-          </Link>
-          <Link href="/shop?collection=Kashmiri" className="rounded-full border border-ivory/40 px-6 py-3 text-sm text-ivory transition duration-300 hover:-translate-y-0.5 hover:border-ivory hover:bg-ivory/10">
-            Explore Kashmiri Collection
-          </Link>
+    <section className="relative overflow-hidden bg-[#111111] text-ivory">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 80% 20%, rgba(240,179,58,0.3) 0%, rgba(240,179,58,0) 18%), radial-gradient(circle at 15% 80%, rgba(183,29,42,0.42) 0%, rgba(183,29,42,0) 34%), linear-gradient(120deg, #0b0b0b 0%, #191919 52%, #261510 100%)",
+        }}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px]" />
+
+      <div className="container-luxe relative z-10 grid min-h-[82vh] items-center gap-10 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="max-w-xl animate-fade-up">
+          <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-sports-gold">
+            Premium Sportswear & Gear
+          </p>
+          <h1 className="text-5xl leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
+            PREMIUM SPORTS GEAR
+          </h1>
+          <p className="mt-5 max-w-lg text-sm leading-6 text-white/75 sm:text-base">
+            Football jerseys, football cleats, teamwear, tracksuits, and performance essentials built for style, comfort, and match-day confidence.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/shop" className="rounded-full bg-[#F7C767] px-6 py-3 text-sm font-semibold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#ffd77d]">
+              Shop Now
+            </Link>
+            <Link href="/shop" className="rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-white/10">
+              Explore Collection
+            </Link>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-4 text-[10px] uppercase tracking-[0.2em] text-white/70">
+            <span>Football Jerseys</span>
+            <span>•</span>
+            <span>Football Cleats</span>
+            <span>•</span>
+            <span>Teamwear</span>
+            <span>•</span>
+            <span>Tracksuits</span>
+          </div>
+        </div>
+
+        <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
+          <div className="absolute -left-8 top-10 h-28 w-28 rounded-full border border-[#F7C767]/40" />
+          <div className="absolute -right-6 bottom-10 h-32 w-32 rounded-full border border-white/20" />
+
+          <div className="relative mx-auto max-w-[460px] rounded-[28px] border border-white/10 bg-black/25 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-sm">
+            <div className="rounded-[22px] border border-[#F7C767]/15 bg-[linear-gradient(135deg,#161616,#2c2c2c_40%,#111111)] p-5">
+              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-white/60">
+                <span>Fashion</span>
+                <span className="rounded-full border border-[#F7C767]/40 px-2 py-1 text-[#F7C767]">New</span>
+              </div>
+
+              <div className="mt-5 rounded-[18px] border border-white/10 bg-[linear-gradient(135deg,#90212a,#1e1c1d_52%,#0f0f0f)] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#F7C767]">Champion quality</span>
+                  <span className="text-xl font-black text-white">⚽</span>
+                </div>
+                <div className="relative h-[260px] overflow-hidden rounded-[16px] bg-[radial-gradient(circle_at_65%_20%,rgba(255,255,255,0.2),transparent_18%),linear-gradient(180deg,#3f2124_0%,#1d1d1d_100%)]">
+                  <div className="absolute left-5 top-5 h-20 w-20 rounded-full border border-white/15" />
+                  <div className="absolute bottom-8 left-8 right-8 rounded-[18px] border border-white/10 bg-black/25 p-4 backdrop-blur-sm">
+                    <div className="flex items-baseline justify-between">
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-white/65">Featured</span>
+                      <span className="text-2xl font-black text-[#F7C767]">₹2,800</span>
+                    </div>
+                    <p className="mt-2 text-sm font-medium text-white">Adidas F50 Laceless</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 grid grid-cols-3 gap-3 text-center text-[10px] uppercase tracking-[0.18em] text-white/70">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                  <div className="text-lg font-black text-[#F7C767]">200+</div>
+                  <div className="mt-1">Styles</div>
+                </div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                  <div className="text-lg font-black text-[#F7C767]">COD</div>
+                  <div className="mt-1">Avail</div>
+                </div>
+                <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                  <div className="text-lg font-black text-[#F7C767]">24/7</div>
+                  <div className="mt-1">Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

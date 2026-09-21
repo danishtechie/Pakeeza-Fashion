@@ -100,7 +100,7 @@ export function ShopFilters({ categories }: { categories: Category[] }) {
       </button>
 
       <aside className="hidden w-72 flex-shrink-0 lg:block">
-        <div className="rounded-2xl border border-charcoal/10 bg-ivory/90 p-5 shadow-[0_16px_40px_rgba(17,17,17,0.08)] backdrop-blur-sm">
+        <div className="rounded-[22px] border border-charcoal/10 bg-[#141414] p-5 text-white shadow-[0_18px_45px_rgba(0,0,0,0.14)]">
           {content}
         </div>
       </aside>
@@ -137,8 +137,8 @@ export function ShopFilters({ categories }: { categories: Category[] }) {
 
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-charcoal/10 bg-cream/40 p-3">
-      <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-charcoal/60">{title}</h4>
+    <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+      <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#F7C767]">{title}</h4>
       <div className="flex flex-col gap-2.5">{children}</div>
     </div>
   );
@@ -148,7 +148,7 @@ function FilterOption({ label, active, onClick }: { label: string; active: boole
   return (
     <button
       onClick={onClick}
-      className={`w-full rounded-lg border px-2.5 py-2 text-left text-sm transition ${active ? "border-gold bg-gold/10 font-medium text-charcoal shadow-sm" : "border-transparent bg-transparent text-charcoal/70 hover:border-charcoal/10 hover:bg-charcoal/5 hover:text-charcoal"}`}
+      className={`w-full rounded-lg border px-2.5 py-2 text-left text-sm transition ${active ? "border-[#F7C767] bg-[#F7C767]/10 font-medium text-white shadow-sm" : "border-transparent bg-transparent text-white/75 hover:border-white/10 hover:bg-white/5 hover:text-white"}`}
     >
       {label}
     </button>
