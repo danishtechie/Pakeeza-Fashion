@@ -1,5 +1,5 @@
 import { db } from "@/db/client";
-import { products, productImages, productVariants } from "@/db/schema";
+import { orderItems, products, productImages, productVariants } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import type { ProductInput } from "@/lib/validation/product";
 
@@ -55,16 +55,31 @@ export async function upsertProduct(input: ProductInput, existingId?: string) {
       });
     }
 
-    await tx.delete(productVariants).where(eq(productVariants.productId, productId!));
+    const existingVariants = existingId
+      ? await tx.select().from(productVariants).where(eq(productVariants.productId, productId!))
+      : [];
+    const submittedVariantIds = new Set(input.variants.map((variant) => variant.id).filter(Boolean));
+
+    for (const variant of existingVariants) {
+      if (!submittedVariantIds.has(variant.id)) {
+        const referenced = await tx.select({ id: orderItems.id }).from(orderItems)
+          .where(eq(orderItems.variantId, variant.id)).limit(1);
+        if (referenced.length === 0) {
+          await tx.delete(productVariants).where(eq(productVariants.id, variant.id));
+        }
+      }
+    }
+
     for (const v of input.variants) {
-      await tx.insert(productVariants).values({
-        productId: productId!,
-        size: v.size || null,
-        color: v.color || null,
-        sku: v.sku,
-        stock: v.stock,
-        lowStockThreshold: v.lowStockThreshold,
-      });
+      const values = {
+        productId: productId!, size: v.size || null, color: v.color || null,
+        sku: v.sku, stock: v.stock, lowStockThreshold: v.lowStockThreshold,
+      };
+      if (v.id && existingVariants.some((variant) => variant.id === v.id)) {
+        await tx.update(productVariants).set(values).where(eq(productVariants.id, v.id));
+      } else {
+        await tx.insert(productVariants).values(values);
+      }
     }
 
     return productId!;

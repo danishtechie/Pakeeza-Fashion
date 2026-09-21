@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCartStore, cartSubtotal } from "@/lib/cart-store";
 import { formatPaise, calculateCodAdvance } from "@/lib/money";
+import { isClearlyFakePhone, phoneRegex } from "@/lib/validation/checkout";
 import { toast } from "@/components/ui/toaster";
 import { CheckCircle2, Copy, MessageCircle, ShoppingBag } from "lucide-react";
 
@@ -76,13 +77,18 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
   }, []);
 
   async function signInCustomer() {
+    const mobile = authForm.mobile || form.mobile;
+    if (!phoneRegex.test(mobile) || isClearlyFakePhone(mobile)) {
+      toast("Enter a reachable 10-digit Indian mobile number.", "error");
+      return;
+    }
     try {
       const res = await fetch("/api/customer/session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fullName: authForm.fullName || form.fullName,
-          mobile: authForm.mobile || form.mobile,
+          mobile,
           email: authForm.email || form.email,
           password: authForm.password,
         }),
@@ -190,7 +196,8 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
           </Field>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Mobile number">
-              <input value={authForm.mobile || form.mobile} onChange={(e) => setAuthForm((f) => ({ ...f, mobile: e.target.value }))} className={inputClass} />
+              <input inputMode="tel" value={authForm.mobile || form.mobile} onChange={(e) => setAuthForm((f) => ({ ...f, mobile: e.target.value }))} className={inputClass} placeholder="98765 43210" />
+              <span className="text-xs text-charcoal/50">Use a reachable Indian number. Repeated or placeholder numbers are rejected.</span>
             </Field>
             <Field label="Email address">
               <input type="email" value={authForm.email || form.email} onChange={(e) => setAuthForm((f) => ({ ...f, email: e.target.value }))} className={inputClass} />

@@ -5,10 +5,11 @@ import {
   getCustomerSessionFromRequest,
   signCustomerSession,
 } from "@/lib/customer-session";
+import { phoneSchema } from "@/lib/validation/checkout";
 
 const customerSessionSchema = z.object({
   fullName: z.string().trim().min(2).max(120),
-  mobile: z.string().trim().min(8).max(20),
+  mobile: phoneSchema,
   email: z.string().trim().email(),
   password: z.string().min(6).max(120),
 });
