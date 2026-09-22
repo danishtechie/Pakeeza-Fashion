@@ -10,7 +10,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings().catch(() => null);
-  const storeName = settings?.storeName ?? "Fashion";
+  const storeName = settings?.storeName ?? "Zenvy";
   const tagline = settings?.tagline ?? "Premium Fashion & Style for Everyday Confidence";
   return {
     title: { default: `${storeName} — ${tagline}`, template: `%s | ${storeName}` },

@@ -21,7 +21,7 @@ const policyLinks = [
 ];
 
 export function Footer({ settings }: { settings: SettingsLike }) {
-  const storeName = settings?.storeName ?? "Fashion";
+  const storeName = settings?.storeName ?? "Zenvy";
   const waLink = settings?.whatsappNumber ? `https://wa.me/${settings.whatsappNumber}` : "#";
 
   return (
