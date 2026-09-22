@@ -25,7 +25,10 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           Please enter a valid email address to subscribe.
         </div>
       )}
-      <HeroSection product={featured[0]} storeName={settings?.storeName ?? "Pakeeza Fashion"} />
+      <HeroSection
+        products={[...featured, ...newArrivals.filter((product) => !featured.some((featuredProduct) => featuredProduct.id === product.id))]}
+        storeName={settings?.storeName ?? "Zenvy"}
+      />
 
       {/* Featured Categories */}
       <section className="container-luxe py-16 sm:py-24">

@@ -29,7 +29,7 @@ export function AdminShell({
         <div className="mb-10 flex items-center gap-3 px-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold text-sm text-gold">P</span>
           <div>
-            <span className="block font-display text-xl tracking-tight">Pakeeza Admin</span>
+            <span className="block font-display text-xl tracking-tight">Zenvy Admin</span>
             <span className="text-[9px] uppercase tracking-widest text-ivory/40">Store operations</span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export function AdminShell({
       <div className="flex-1">
         <header className="flex items-center justify-between border-b border-charcoal/10 bg-ivory/80 px-5 py-4 backdrop-blur-xl lg:px-10">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-gold">Pakeeza / {currentSection}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-gold">Zenvy / {currentSection}</p>
             <p className="mt-1 text-xs text-charcoal/45">Live store workspace</p>
           </div>
           <div className="flex items-center gap-3">

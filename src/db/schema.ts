@@ -1,5 +1,5 @@
 /**
- * Pakeeza Fashion — database schema (Drizzle ORM, SQLite dialect).
+ * Zenvy — database schema (Drizzle ORM, SQLite dialect).
  *
  * This runs on SQLite for the local/demo build so the whole app works with
  * zero external services. It is deliberately written to be Postgres-portable:
@@ -252,7 +252,7 @@ export const newsletterSubscribers = sqliteTable("newsletter_subscribers", {
 
 export const settings = sqliteTable("settings", {
   id: text("id").primaryKey().default("singleton"),
-  storeName: text("store_name").notNull().default("Pakeeza Fashion"),
+  storeName: text("store_name").notNull().default("Zenvy"),
   tagline: text("tagline").notNull().default("Where Heritage Meets Modern Elegance"),
   whatsappNumber: text("whatsapp_number").notNull(),
   storePhone: text("store_phone"),

@@ -13,30 +13,37 @@ import { rupeesToPaise } from "../src/lib/money";
 import { saveSeedImage } from "./placeholder-image";
 
 async function main() {
-  console.log("Seeding Pakeeza Fashion...");
+  console.log("Seeding Zenvy...");
 
   // ---- Settings (singleton) ----
   await db
     .insert(settings)
     .values({
       id: "singleton",
-      storeName: "Pakeeza Fashion",
+      storeName: "Zenvy",
       tagline: "Where Heritage Meets Modern Elegance",
       whatsappNumber: process.env.WHATSAPP_DEFAULT_NUMBER || "919999999999",
       storePhone: process.env.WHATSAPP_DEFAULT_NUMBER || "919999999999",
-      storeEmail: "hello@pakeezafashion.com",
+      storeEmail: "hello@zenvy.com",
       storeAddress: "Srinagar, Jammu & Kashmir, India",
       deliveryFee: rupeesToPaise(99),
       freeDeliveryAbove: rupeesToPaise(2999),
       codEnabled: true,
       codAdvancePercent: 50,
       currency: "INR",
-      instagramUrl: "https://instagram.com/pakeezafashion",
+      instagramUrl: "https://instagram.com/zenvy",
     })
-    .onConflictDoNothing();
+    .onConflictDoUpdate({
+      target: settings.id,
+      set: {
+        storeName: "Zenvy",
+        storeEmail: "hello@zenvy.com",
+        instagramUrl: "https://instagram.com/zenvy",
+      },
+    });
 
   // ---- Admin user ----
-  const adminEmail = (process.env.SEED_ADMIN_EMAIL || "admin@pakeezafashion.com").toLowerCase();
+  const adminEmail = (process.env.SEED_ADMIN_EMAIL || "admin@zenvy.com").toLowerCase();
   const adminPassword = process.env.SEED_ADMIN_PASSWORD || "ChangeThisPassword123!";
   const passwordHash = await bcrypt.hash(adminPassword, 12);
   await db
@@ -71,7 +78,7 @@ async function main() {
   for (const c of categoryDefs) {
     const imageUrl = await saveSeedImage(`category-${c.slug}`, {
       title: c.name,
-      subtitle: "Pakeeza Fashion",
+      subtitle: "Zenvy",
       palette: c.palette,
       width: 600,
       height: 800,

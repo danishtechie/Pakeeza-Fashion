@@ -51,7 +51,7 @@ function AdminLoginForm() {
         <div className="mb-6 flex flex-col items-center gap-2">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-charcoal text-ivory shadow-lg"><Lock size={20} /></div>
           <p className="eyebrow mt-2">Store operations</p>
-          <h1 className="font-display text-3xl tracking-tight">Pakeeza Fashion</h1>
+          <h1 className="font-display text-3xl tracking-tight">Zenvy</h1>
           <p className="text-sm text-charcoal/50">Sign in to manage your store</p>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

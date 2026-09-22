@@ -140,7 +140,7 @@ export function ProductForm({ categories, initial }: { categories: Category[]; i
             />
           </Field>
           <Field label="Brand" error={errors.brand}>
-            <input value={form.brand} onChange={(e) => set("brand", e.target.value)} placeholder="e.g. Gul Ahmed, Sapphire, Pakeeza" className={inputClass} />
+            <input value={form.brand} onChange={(e) => set("brand", e.target.value)} placeholder="e.g. Gul Ahmed, Sapphire, Zenvy" className={inputClass} />
           </Field>
           <div className="grid grid-cols-2 gap-4">
             <Field label="Slug" error={errors.slug}>
