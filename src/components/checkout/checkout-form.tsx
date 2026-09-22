@@ -189,22 +189,22 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
     return (
       <div className="mx-auto max-w-lg rounded-[24px] border border-charcoal/10 bg-[#111111] p-6 text-white shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
         <h2 className="mb-4 font-display text-2xl uppercase tracking-[-0.04em]">Sign in to continue</h2>
-        <p className="mb-6 text-sm text-charcoal/60">Create a secure customer account before checkout so your order is tied to a real buyer.</p>
+        <p className="mb-6 text-sm text-white/70">Create a secure customer account before checkout so your order is tied to a real buyer.</p>
         <div className="grid gap-4">
-          <Field label="Full name">
-            <input value={authForm.fullName || form.fullName} onChange={(e) => setAuthForm((f) => ({ ...f, fullName: e.target.value }))} className={inputClass} />
+          <Field label="Full name" dark>
+            <input value={authForm.fullName || form.fullName} onChange={(e) => setAuthForm((f) => ({ ...f, fullName: e.target.value }))} className={authInputClass} />
           </Field>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Mobile number">
-              <input inputMode="tel" value={authForm.mobile || form.mobile} onChange={(e) => setAuthForm((f) => ({ ...f, mobile: e.target.value }))} className={inputClass} placeholder="98765 43210" />
-              <span className="text-xs text-charcoal/50">Use a reachable Indian number. Repeated or placeholder numbers are rejected.</span>
+            <Field label="Mobile number" dark>
+              <input inputMode="tel" value={authForm.mobile || form.mobile} onChange={(e) => setAuthForm((f) => ({ ...f, mobile: e.target.value }))} className={authInputClass} placeholder="98765 43210" />
+              <span className="text-xs text-white/60">Use a reachable Indian number. Repeated or placeholder numbers are rejected.</span>
             </Field>
-            <Field label="Email address">
-              <input type="email" value={authForm.email || form.email} onChange={(e) => setAuthForm((f) => ({ ...f, email: e.target.value }))} className={inputClass} />
+            <Field label="Email address" dark>
+              <input type="email" value={authForm.email || form.email} onChange={(e) => setAuthForm((f) => ({ ...f, email: e.target.value }))} className={authInputClass} />
             </Field>
           </div>
-          <Field label="Create password">
-            <input type="password" value={authForm.password} onChange={(e) => setAuthForm((f) => ({ ...f, password: e.target.value }))} className={inputClass} placeholder="Minimum 6 characters" />
+          <Field label="Create password" dark>
+            <input type="password" value={authForm.password} onChange={(e) => setAuthForm((f) => ({ ...f, password: e.target.value }))} className={authInputClass} placeholder="Minimum 6 characters" />
           </Field>
           <button type="button" onClick={signInCustomer} className="rounded-full bg-[#F7C767] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd77d]">
             Continue to checkout
@@ -332,7 +332,7 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
               </div>
               <div className="flex-1">
                 <p className="line-clamp-1 text-sm">{l.name}</p>
-                <p className="text-xs text-charcoal/50">
+                <p className="text-xs text-white/60">
                   {[l.size, l.color].filter(Boolean).join(" · ")} · Qty {l.quantity}
                 </p>
               </div>
@@ -341,10 +341,10 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
           ))}
         </ul>
         <div className="mt-5 flex flex-col gap-1.5 border-t border-charcoal/10 pt-4 text-sm">
-          <div className="flex justify-between text-charcoal/70">
+          <div className="flex justify-between text-white/70">
             <span>Subtotal</span><span>{formatPaise(subtotal, currency)}</span>
           </div>
-          <div className="flex justify-between text-charcoal/70">
+          <div className="flex justify-between text-white/70">
             <span>Delivery</span><span>{effectiveDeliveryFee > 0 ? formatPaise(effectiveDeliveryFee, currency) : "Free"}</span>
           </div>
           <div className="mt-1 flex justify-between border-t border-charcoal/10 pt-2 text-base font-medium">
@@ -358,7 +358,7 @@ export function CheckoutForm({ deliveryFee, freeDeliveryAbove, codEnabled, codAd
         >
           {submitting ? "Placing Order…" : "Place Order"}
         </button>
-        <p className="mt-3 text-center text-xs text-charcoal/45">
+        <p className="mt-3 text-center text-xs text-white/60">
           No payment is collected here. You&apos;ll confirm payment directly with us on WhatsApp.
         </p>
       </div>
@@ -404,10 +404,10 @@ function OrderSuccess({ result }: { result: OrderResult }) {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string[]; children: React.ReactNode }) {
+function Field({ label, error, dark = false, children }: { label: string; error?: string[]; dark?: boolean; children: React.ReactNode }) {
   return (
     <label className="flex flex-col gap-1.5 text-sm">
-      <span className="text-charcoal/70">{label}</span>
+      <span className={dark ? "text-white/80" : "text-charcoal/70"}>{label}</span>
       {children}
       {error?.[0] && <span className="text-xs text-burgundy">{error[0]}</span>}
     </label>
@@ -432,4 +432,5 @@ function OrderTypeOption({
   );
 }
 
-const inputClass = "rounded-md border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#F7C767]";
+const inputClass = "rounded-md border border-charcoal/20 bg-ivory px-3.5 py-2.5 text-sm text-charcoal placeholder:text-charcoal/40 outline-none focus:border-[#F7C767]";
+const authInputClass = "rounded-md border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder:text-white/50 outline-none focus:border-[#F7C767]";
