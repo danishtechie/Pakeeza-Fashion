@@ -25,7 +25,7 @@ type HeroProduct = {
   thumbnail: string;
 };
 
-export function HeroSection({ product }: { product?: HeroProduct }) {
+export function HeroSection({ product, storeName = "Pakeeza Fashion" }: { product?: HeroProduct; storeName?: string }) {
   const productImage = product?.thumbnail || "/seed/product-premium-womens-suit-1.png";
   const productName = product?.name || "Signature Fashion Edit";
   const productPrice = product
@@ -49,7 +49,7 @@ export function HeroSection({ product }: { product?: HeroProduct }) {
             Premium fashion essentials
           </p>
           <h1 className="text-5xl leading-[0.9] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-            MODERN FASHION
+            {storeName}
           </h1>
           <p className="mt-5 max-w-lg text-sm leading-6 text-white/75 sm:text-base">
             Look polished, stay confident, and shop elevated essentials designed for everyday wear, special moments, and effortless statement style.

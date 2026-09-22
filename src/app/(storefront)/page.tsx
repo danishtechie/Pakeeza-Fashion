@@ -3,14 +3,15 @@ import Image from "next/image";
 import { getFeaturedSections, listCategories, listFeaturedReviews } from "@/server/catalog";
 import { ProductCard } from "@/components/product/product-card";
 import { HeroSection } from "@/components/home/hero-section";
+import { getSettings } from "@/lib/settings";
 import { Star, Sparkles, ShieldCheck, MessageCircle, Truck, Gem } from "lucide-react";
 
 export const revalidate = 60;
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ subscribed?: string }> }) {
   const { subscribed } = await searchParams;
-  const [{ featured, trending, newArrivals, kashmiri, pakistani }, categories, testimonials] =
-    await Promise.all([getFeaturedSections(), listCategories(), listFeaturedReviews()]);
+  const [{ featured, trending, newArrivals, kashmiri, pakistani }, categories, testimonials, settings] =
+    await Promise.all([getFeaturedSections(), listCategories(), listFeaturedReviews(), getSettings().catch(() => null)]);
 
   return (
     <div>
@@ -24,7 +25,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           Please enter a valid email address to subscribe.
         </div>
       )}
-      <HeroSection product={featured[0]} />
+      <HeroSection product={featured[0]} storeName={settings?.storeName ?? "Pakeeza Fashion"} />
 
       {/* Featured Categories */}
       <section className="container-luxe py-16 sm:py-24">

@@ -67,7 +67,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                     key={p}
                     href={`/shop?${params.toString()}`}
                     className={`flex h-9 w-9 items-center justify-center rounded-full text-sm ${
-                      p === page ? "bg-[#F7C767] text-[#111111]" : "border border-white/10 bg-[#111111] text-white hover:border-[#F7C767]"
+                      p === page ? "bg-[#F7C767] text-[#111111]" : "border border-charcoal/15 bg-ivory text-charcoal hover:border-[#F7C767]"
                     }`}
                   >
                     {p}

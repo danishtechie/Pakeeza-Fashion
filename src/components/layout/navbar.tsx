@@ -31,7 +31,7 @@ export function Navbar({ storeName }: { storeName: string }) {
         </button>
 
         <Link href="/" className="group flex items-center gap-3 font-display text-lg tracking-tight sm:text-2xl">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#F7C767] bg-[#F7C767] text-xs font-black text-[#111111] transition-transform duration-500 group-hover:rotate-12">M</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#F7C767] bg-[#F7C767] text-xs font-black text-[#111111] transition-transform duration-500 group-hover:rotate-12">P</span>
           <span className="text-white">{storeName}</span>
         </Link>
 

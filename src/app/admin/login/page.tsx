@@ -44,10 +44,10 @@ function AdminLoginForm() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-charcoal px-4">
-      <div className="absolute -left-24 top-1/4 h-72 w-72 rounded-full border border-gold/20" />
-      <div className="absolute -right-20 bottom-1/4 h-80 w-80 rounded-full border border-forest-light/30" />
-      <div className="relative w-full max-w-sm rounded-2xl border border-ivory/10 bg-ivory p-8 shadow-2xl shadow-black/30 sm:p-10">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f3efe9] px-4">
+      <div className="absolute -left-24 top-1/4 h-72 w-72 rounded-full border border-gold/25" />
+      <div className="absolute -right-20 bottom-1/4 h-80 w-80 rounded-full border border-forest-light/25" />
+      <div className="relative w-full max-w-sm rounded-2xl border border-charcoal/10 bg-white p-8 shadow-2xl shadow-charcoal/10 sm:p-10">
         <div className="mb-6 flex flex-col items-center gap-2">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-charcoal text-ivory shadow-lg"><Lock size={20} /></div>
           <p className="eyebrow mt-2">Store operations</p>
